@@ -35,7 +35,10 @@ defmodule TestApp.Accounts do
       ** (Ecto.NoResultsError)
 
   """
+
   def get_user!(id), do: Repo.get!(User, id)
+
+
 
   @doc """
   Creates a user.
@@ -43,7 +46,7 @@ defmodule TestApp.Accounts do
   ## Examples
 
       iex> create_user(%{field: value})
-      {:ok, %User{}}
+      {:ok, %User{}}test
 
       iex> create_user(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
@@ -57,7 +60,6 @@ defmodule TestApp.Accounts do
 
   @doc """
   Updates a user.
-
   ## Examples
 
       iex> update_user(user, %{field: new_value})
@@ -98,7 +100,30 @@ defmodule TestApp.Accounts do
       %Ecto.Changeset{data: %User{}}
 
   """
+  def user_gender(%User{gender: gender}) do
+    case gender do
+      "male" -> "User is a male"
+      "female" -> "User is a female"
+      _ -> "Unknown gender"
+    end
+  end
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
+  end
+
+  def user_age_range(%User{age: age}) when age < 18 do
+  "User is a minor"
+  end
+
+  def user_age_range(%User{age: age}) when age >= 18 and age < 65 do
+  "User is an Adult"
+  end
+
+  def user_age_range(_user) do
+  "Unknown age range"
+  end
+
+  def user_details(%User{} = user) do
+    user_gender(user) <> " " <> user_age_range(user)
   end
 end
