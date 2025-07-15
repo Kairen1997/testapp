@@ -7,7 +7,7 @@ defmodule TestApp.Content.Post do
     field :body, :string
 
 
-   belongs_to :user, TestApp.Accounts.User
+    belongs_to :user, TestApp.Accounts.User
     timestamps(type: :utc_datetime)
   end
 
