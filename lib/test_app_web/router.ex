@@ -24,11 +24,13 @@ defmodule TestAppWeb.Router do
 
     live "/users/:id", UserLive.Show, :show
     live "/users/:id/show/edit", UserLive.Show, :edit
+    live "/users/:id/bmi_calculator", UserLive.Show, :bmi_calculator
 
   end
 
   # Other scopes may use custom stacks.
   # scope "/api", TestAppWeb do
+  
   #   pipe_through :api
   # end
 
